@@ -65,7 +65,7 @@ app.use(cors())
 // For understanding purpose : LETS ASSUME SERVER IS LISTENING ON PORT_NUMBER : 5000
 
 app.get("/", (req, res)=>{                              // When user enters just  :  "localhost:5000"   he will get this msg :)
-    res.send("Hello, this msg is sent by server!!")
+    res.json({message: "Hello, this msg is sent by server!!"})
 })
 
 
