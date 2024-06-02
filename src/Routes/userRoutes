@@ -1,0 +1,14 @@
+const express= require("express")
+const userRouter = express.Router()                 // To create a router..
+const {signup, signin}= require("../controllers/userController")
+
+                                        // So whenever we do "localhost:5000/user" , we will come to this page..
+                                        // and thereafter if we type "sing-in" or "sign-up" these functions will
+                                        // be executed...
+userRouter.post("/signin", signin)      // "signin" function will execute for signin endpoint.... This "signin"
+                                        // function is in "userController" file.. in the "Controller" folder
+
+userRouter.post("/signup", signup)      // same as above
+
+module.exports= userRouter
+

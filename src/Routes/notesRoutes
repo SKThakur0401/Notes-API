@@ -1,0 +1,31 @@
+const express= require("express")
+const auth = require("../middleware/auth")
+const noteRouter = express.Router()
+const {createNotes, updateNotes, deleteNotes, getNotes}= require("../controllers/notesController")
+
+// These four functions we are importing from "notesController"
+
+
+// Note: In code below endpoint of both create and update notes
+// is same, i.e. : "localhost:5000/note"  and (token in authorization for user)
+
+// The difference is one is "post" and other is "get" request, so computer will know which function we
+// are talking about by seeing "get" or "post"
+
+// NOW! Before performing these CRUD operations... "auth" function will be executed!!! This function
+// Will check if the token entered is correct or not!  If token is correct it will execute the "createNote" or
+// whatever function :)
+
+noteRouter.post("/", auth, createNotes)         // "auth" function is a "middleware" just like a security guard..
+                                                // read code of "auth" function
+
+
+
+noteRouter.put("/:id", auth, updateNotes)       // "/:id" is necessary to know which note we are talking about
+                                        // In our URL we will write : "localhost:5000/note/ _id of note which we want to update"
+
+noteRouter.delete("/:id", auth, deleteNotes)
+
+noteRouter.get("/", auth, getNotes)
+
+module.exports= noteRouter
