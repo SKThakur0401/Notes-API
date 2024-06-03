@@ -39,9 +39,9 @@
 const express = require("express")                  // to import express
 const app= express()
 
-const userRouter= require("./Routes/userRoutes")        // In "Routes/userRoutes" file we are exporting "userRouter"...
+const userRouter= require("./src/Routes/userRoutes")        // In "Routes/userRoutes" file we are exporting "userRouter"...
                                                         // and we are importing it here in this file to use :)
-const notesRouter= require("./Routes/notesRoutes")
+const notesRouter= require("./src/Routes/notesRoutes")
 const mongoose = require("mongoose")        // importing "Mongo-DB"
 
 const cors = require("cors")
@@ -94,7 +94,7 @@ console.log('MongoDB URL:', mongoUrl);
 
 console.log(process.env.MONGO_DB_URL)
 
-mongoose.connect(process.env.MONGO_DB_URL)
+mongoose.connect('mongodb+srv://saumyakumarthakurp:admin@cluster0.ygdoaqw.mongodb.net/notes_db?retryWrites=true&w=majority&appName=Cluster0')
 .then(() => {
   app.listen(PORT, HOST, () => {
     console.log("Server is running on port and host " + PORT + " " + HOST);
