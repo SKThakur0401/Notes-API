@@ -94,7 +94,7 @@ console.log('MongoDB URL:', mongoUrl);
 
 console.log(process.env.MONGO_DB_URL)
 
-mongoose.connect('mongodb+srv://saumyakumarthakurp:admin@cluster0.ygdoaqw.mongodb.net/notes_db?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(process.env.MONGO_DB_URL)
 .then(() => {
   app.listen(PORT, HOST, () => {
     console.log("Server is running on port and host " + PORT + " " + HOST);
